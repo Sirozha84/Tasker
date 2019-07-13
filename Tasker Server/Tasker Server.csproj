@@ -7,7 +7,7 @@
     <ProjectGuid>{11CE2670-B446-4638-A8F9-BB12423CFA6F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Tasker_Server</RootNamespace>
-    <AssemblyName>Tasker_Server</AssemblyName>
+    <AssemblyName>Tasker Server</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
