@@ -76,6 +76,7 @@
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(148, 20);
             this.textBoxLogin.TabIndex = 2;
+            this.textBoxLogin.TextChanged += new System.EventHandler(this.TextBoxLogin_TextChanged);
             // 
             // label3
             // 
@@ -157,6 +158,7 @@
             this.textBoxServer.Name = "textBoxServer";
             this.textBoxServer.Size = new System.Drawing.Size(148, 20);
             this.textBoxServer.TabIndex = 10;
+            this.textBoxServer.TextChanged += new System.EventHandler(this.TextBoxServer_TextChanged);
             // 
             // label4
             // 

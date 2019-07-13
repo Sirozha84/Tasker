@@ -22,7 +22,7 @@ namespace Tasker_Server
             LoadAccounts();
             Account admin = accounts.Find(o => o.login == "admin");
             string newpas = PasGenerate.Generate();
-            if (admin == null) accounts.Add(new Account("admin", newpas));
+            if (admin == null) accounts.Add(new Account("admin", "Администратор", newpas));
             else admin.password = newpas;
             SaveAccounts();
             Console.WriteLine("Пароль для пользователя admin: " + newpas);
@@ -50,7 +50,7 @@ namespace Tasker_Server
                 {
                     BinaryReader reader = new BinaryReader(stream);
                     BinaryWriter writer = new BinaryWriter(stream);
-                    writer.Write(answer(reader.ReadString()));
+                    writer.Write(answer(reader.ReadString().Split('☺')));
                 }
             }
             catch (Exception e)
@@ -86,10 +86,19 @@ namespace Tasker_Server
             }
         }
 
-        static string answer(string query)
+        static string answer(string[] query)
         {
-            Console.WriteLine(query);
-            return "What?";
+            if (query.Count() != 3) return "error";
+            if (query[0] != minimalVersion) return "badversion☺" + minimalVersion;
+            Account acc = accounts.Find(o => o.login == query[1]);
+            if (acc == null) return "failed";
+#if DEBUG
+            if (query[2] != "123") return "failed";
+#else
+            if (query[2] != acc.password) return "failed";
+#endif
+            Log.Write("Авторизовался пользователь " + acc.fullname);
+            return "ok☺" + acc.fullname;
         }
     }
 }

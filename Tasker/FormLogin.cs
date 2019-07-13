@@ -56,7 +56,9 @@ namespace Tasker
                 Properties.Settings.Default.password = textBoxPassword.Text;
             Properties.Settings.Default.autologin = checkBoxAutologin.Checked;
             Properties.Settings.Default.Save();
-            
+
+            string[] answer = new string[1];
+            string err = "Ошибка подключения";
             try
             {
                 TcpClient client = new TcpClient();
@@ -65,27 +67,41 @@ namespace Tasker
                 BinaryReader reader = new BinaryReader(stream);
                 BinaryWriter writer = new BinaryWriter(stream);
                 writer.Write(Program.clientVer + "☺" + Properties.Settings.Default.login + "☺" + Properties.Settings.Default.password);
-                MessageBox.Show(reader.ReadString());
+                answer = reader.ReadString().Split('☺');
             }
             catch {  }
 
 
-            /*if (true)
+
+            if (answer[0]=="ok" && answer.Count() == 2)
             {
-                Close();
+                FormMain form = new FormMain(answer[1]);
+                Hide();
+                form.ShowDialog();
+                Environment.Exit(0);
+                //Close();
             }
             else
             {
-                //Что-то пошло не так, сбрасываем галочки
-                checkBoxRemember.Checked = false;                
+                if (answer[0] == "badversion" && answer.Count() == 2)
+                    err = "Для работы необходима версия клиента " + answer[1] + " или выше.";
+                if (answer[0] == "failed") err = "Ошибка авторизации.\nНе правильное имя пользователя или пароль.";
+
+                MessageBox.Show(err, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 checkBoxAutologin.Checked = false;
-            }*/
+            }
 
         }
 
-        private void TextBoxPassword_TextChanged(object sender, EventArgs e)
+        void OKenable()
         {
-            buttonOK.Enabled = textBoxPassword.Text.Length > 0;
+            buttonOK.Enabled = (textBoxServer.Text.Length > 0 &
+                                textBoxLogin.Text.Length > 0 &
+                                textBoxPassword.Text.Length > 0);
         }
+
+        private void TextBoxPassword_TextChanged(object sender, EventArgs e) { OKenable(); }
+        private void TextBoxServer_TextChanged(object sender, EventArgs e) { OKenable(); }
+        private void TextBoxLogin_TextChanged(object sender, EventArgs e) { OKenable(); }
     }
 }
