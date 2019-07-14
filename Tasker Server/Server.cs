@@ -88,17 +88,29 @@ namespace Tasker_Server
 
         static string answer(string[] query)
         {
-            if (query.Count() != 3) return "error";
-            if (query[0] != minimalVersion) return "badversion☺" + minimalVersion;
-            Account acc = accounts.Find(o => o.login == query[1]);
-            if (acc == null) return "failed";
+            if (query[0] == "ping") return "pong";
+            if (query[0] == "login")
+            {
+                if (query.Count() != 4) return "error";
+                if (query[1] != minimalVersion) return "badversion☺" + minimalVersion;
+                Account acc = accounts.Find(o => o.login == query[2]);
+                if (acc == null) return "failed";
 #if DEBUG
-            if (query[2] != "123") return "failed";
+                if (query[3] != "123") return "failed";
 #else
-            if (query[2] != acc.password) return "failed";
+                if (query[2] != acc.password) return "failed";
 #endif
-            Log.Write("Авторизовался пользователь " + acc.fullname);
-            return "ok☺" + acc.fullname;
+                Log.Write("Авторизовался пользователь " + acc.fullname);
+                return "ok☺" + acc.fullname;
+            }
+            if (query[0] == "userlist")
+            {
+                string ans = "";
+                foreach (Account acc in accounts)
+                   ans += acc.login + "☺";
+                return ans;
+            }
+            return "what?";
         }
     }
 }

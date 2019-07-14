@@ -17,5 +17,16 @@ namespace Tasker
             InitializeComponent();
             Text = "Tasker - " + name;
         }
+        
+        #region Menu
+        private void MenuExit_Click(object sender, EventArgs e) { Close(); }
+        private void MenuQuery_Click(object sender, EventArgs e) { FormQuery form = new FormQuery(); form.ShowDialog(); }
+        private void MenuUsers_Click(object sender, EventArgs e) { FormUserList form = new FormUserList(); form.ShowDialog(); }
+        private void MenuAbout_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Tasker\n" + "Версия: " + Program.version + "\nАвтор: Сергей Гордеев", "О программе",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        #endregion
     }
 }

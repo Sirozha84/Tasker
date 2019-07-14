@@ -21,5 +21,12 @@ namespace Tasker
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormLogin(args.Count() > 0));
         }
+
+        static public void ErrorConnection()
+        {
+            MessageBox.Show("Произошла ошибка соединения. Продолжение работы невозможно, повторите попытку позднее.",
+                "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Environment.Exit(0);
+        }
     }
 }

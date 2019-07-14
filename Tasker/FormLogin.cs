@@ -66,7 +66,8 @@ namespace Tasker
                 NetworkStream stream = client.GetStream();
                 BinaryReader reader = new BinaryReader(stream);
                 BinaryWriter writer = new BinaryWriter(stream);
-                writer.Write(Program.clientVer + "☺" + Properties.Settings.Default.login + "☺" + Properties.Settings.Default.password);
+                writer.Write("login☺" + Program.clientVer + "☺" + Properties.Settings.Default.login + "☺" + 
+                    Properties.Settings.Default.password);
                 answer = reader.ReadString().Split('☺');
             }
             catch {  }
