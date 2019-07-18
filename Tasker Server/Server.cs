@@ -14,15 +14,15 @@ namespace Tasker_Server
     class Server
     {
         const string minimalVersion = "1.0.0";                          //Минимальная версия клиента
-        static public List<Account> accounts = new List<Account>();     //Список пользователей
-
+        static public List<Users> users = new List<Users>();     //Список пользователей
+        
         static void Main(string[] args)
         {
             Console.WriteLine("Tasker Server     Версия 1.0.0 (13.07.2019)\n");
             LoadAccounts();
-            Account admin = accounts.Find(o => o.login == "admin");
+            Users admin = users.Find(o => o.login == "admin");
             string newpas = PasGenerate.Generate();
-            if (admin == null) accounts.Add(new Account("admin", "Администратор", newpas));
+            if (admin == null) users.Add(new Users("admin", "Администратор", newpas));
             else admin.password = newpas;
             SaveAccounts();
             Console.WriteLine("Пароль для пользователя admin: " + newpas);
@@ -63,22 +63,22 @@ namespace Tasker_Server
         {
             try
             {
-                var serializer = new XmlSerializer(typeof(List<Account>));
+                var serializer = new XmlSerializer(typeof(List<Users>));
                 using (var reader = new StreamReader("accounts.xml"))
-                    accounts = (List<Account>)serializer.Deserialize(reader);
+                    users = (List<Users>)serializer.Deserialize(reader);
             }
             catch
             {
-                accounts = new List<Account>();
+                users = new List<Users>();
             }
         }
         public static void SaveAccounts()
         {
             try
             {
-                var serializer = new XmlSerializer(typeof(List<Account>));
+                var serializer = new XmlSerializer(typeof(List<Users>));
                 using (var writer = new StreamWriter("accounts.xml"))
-                    serializer.Serialize(writer, accounts);
+                    serializer.Serialize(writer, users);
             }
             catch
             {
@@ -93,7 +93,7 @@ namespace Tasker_Server
             {
                 if (query.Count() != 4) return "error";
                 if (query[1] != minimalVersion) return "badversion☺" + minimalVersion;
-                Account acc = accounts.Find(o => o.login == query[2]);
+                Users acc = users.Find(o => o.login == query[2]);
                 if (acc == null) return "failed";
 #if DEBUG
                 if (query[3] != "123") return "failed";
@@ -106,7 +106,7 @@ namespace Tasker_Server
             if (query[0] == "userlist")
             {
                 string ans = "";
-                foreach (Account acc in accounts)
+                foreach (Users acc in users)
                    ans += acc.login + "☺";
                 return ans;
             }

@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Tasker_Server
 {
-    public class Account
+    class Users
     {
         public string login;
         public string fullname;
         public string password;
 
-        public Account() { }
+        public Users() { }
 
-        public Account(string login, string fullname, string password)
+        public Users(string login, string fullname, string password)
         {
             this.login = login;
             this.fullname = fullname;
