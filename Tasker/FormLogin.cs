@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net.Sockets;
-using System.IO;
-using System.Threading;
+//using System.Net.Sockets;
+//using System.IO;
+//using System.Threading;
 
 namespace Tasker
 {
@@ -59,20 +59,8 @@ namespace Tasker
 
             string[] answer = new string[1];
             string err = "Ошибка подключения";
-            try
-            {
-                TcpClient client = new TcpClient();
-                client.Connect(Properties.Settings.Default.server, 8082);
-                NetworkStream stream = client.GetStream();
-                BinaryReader reader = new BinaryReader(stream);
-                BinaryWriter writer = new BinaryWriter(stream);
-                writer.Write("login☺" + Program.clientVer + "☺" + Properties.Settings.Default.login + "☺" + 
-                    Properties.Settings.Default.password);
-                answer = reader.ReadString().Split('☺');
-            }
-            catch {  }
-
-
+            answer = Query.Say("login☺" + Program.clientVer + "☺" + Properties.Settings.Default.login + "☺" +
+                    Properties.Settings.Default.password).Split('☺');
 
             if (answer[0]=="ok" && answer.Count() == 2)
             {

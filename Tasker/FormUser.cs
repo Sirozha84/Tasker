@@ -20,5 +20,17 @@ namespace Tasker
             {
             }
         }
+
+        private void ButtonOK_Click(object sender, EventArgs e)
+        {
+
+            Close();
+        }
+
+        private void ButtonCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
     }
 }

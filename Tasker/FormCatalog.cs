@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net.Sockets;
-using System.IO;
 
 namespace Tasker
 {
@@ -28,22 +26,10 @@ namespace Tasker
         void Refresh()
         {
             string[] answer = new string[1];
-            try
-            {
-                TcpClient client = new TcpClient();
-                client.Connect(Properties.Settings.Default.server, 8082);
-                NetworkStream stream = client.GetStream();
-                BinaryReader reader = new BinaryReader(stream);
-                BinaryWriter writer = new BinaryWriter(stream);
-                if (cat == 0) writer.Write("userlist");
-                //if (cat == 0) writer.Write("");
-                //if (cat == 0) writer.Write("");
-                answer = reader.ReadString().Split('☺');
-            }
-            catch
-            {
-                Program.ErrorConnection();
-            }
+            if (cat == 0) answer = Query.Say("userlist").Split('☺');
+            //if (cat == 0) writer.Write("");
+            //if (cat == 0) writer.Write("");
+            if (answer[0] == "error") Program.ErrorConnection();
             listViewUsers.BeginUpdate();
             listViewUsers.Items.Clear();
             foreach (string s in answer)
