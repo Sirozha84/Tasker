@@ -107,18 +107,43 @@ namespace Tasker_Server
             {
                 string ans = "";
                 foreach (Users acc in users)
-                   ans += acc.login + "☺";
+                    if (acc.login != "admin")
+                        ans += acc.login + "☺";
                 return ans;
+            }
+            if (query[0] == "userread")
+            {
+                if (query.Count() != 2) return "error";
+                Users user = users.Find(o => o.login == query[1]);
+                if (user == null) return "error";
+                return user.login + "☺" +
+                    user.password + "☺" +
+                    user.fullname + "☺" +
+                    user.company + "☺" +
+                    user.departament + "☺" +
+                    user.post + "☺" +
+                    user.rights + "☺" +
+                    user.comment;
             }
             if (query[0] == "userwrite")
             {
                 if (query.Count() != 9) return "error";
                 Users user = users.Find(o => o.login == query[1]);
-                if (user == null) user = new Users();
+                if (user == null)
+                {
+                    user = new Users();
+                    users.Add(user);
+                }
                 user.Set(query);
-                users.Add(user);
                 SaveUsers();
                 return "ok";
+            }
+            if (query[0] == "userdel")
+            {
+
+
+
+
             }
             return "what?";
         }

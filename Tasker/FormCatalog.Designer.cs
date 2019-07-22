@@ -28,30 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listViewUsers = new System.Windows.Forms.ListView();
+            this.listViewCat = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listViewUsers
+            // listViewCat
             // 
-            this.listViewUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listViewCat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewCat.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
-            this.listViewUsers.FullRowSelect = true;
-            this.listViewUsers.HideSelection = false;
-            this.listViewUsers.Location = new System.Drawing.Point(12, 12);
-            this.listViewUsers.MultiSelect = false;
-            this.listViewUsers.Name = "listViewUsers";
-            this.listViewUsers.Size = new System.Drawing.Size(229, 337);
-            this.listViewUsers.TabIndex = 0;
-            this.listViewUsers.UseCompatibleStateImageBehavior = false;
-            this.listViewUsers.View = System.Windows.Forms.View.Details;
-            this.listViewUsers.SelectedIndexChanged += new System.EventHandler(this.ListViewUsers_SelectedIndexChanged);
+            this.listViewCat.FullRowSelect = true;
+            this.listViewCat.HideSelection = false;
+            this.listViewCat.Location = new System.Drawing.Point(12, 12);
+            this.listViewCat.MultiSelect = false;
+            this.listViewCat.Name = "listViewCat";
+            this.listViewCat.Size = new System.Drawing.Size(229, 337);
+            this.listViewCat.TabIndex = 0;
+            this.listViewCat.UseCompatibleStateImageBehavior = false;
+            this.listViewCat.View = System.Windows.Forms.View.Details;
+            this.listViewCat.SelectedIndexChanged += new System.EventHandler(this.ListViewUsers_SelectedIndexChanged);
+            this.listViewCat.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListViewCat_MouseDoubleClick);
             // 
             // columnHeader1
             // 
@@ -79,6 +80,7 @@
             this.buttonEdit.TabIndex = 2;
             this.buttonEdit.Text = "Изменить";
             this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.ButtonEdit_Click);
             // 
             // buttonDel
             // 
@@ -99,7 +101,7 @@
             this.Controls.Add(this.buttonDel);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(this.listViewUsers);
+            this.Controls.Add(this.listViewCat);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(350, 400);
@@ -113,7 +115,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView listViewUsers;
+        private System.Windows.Forms.ListView listViewCat;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonDel;

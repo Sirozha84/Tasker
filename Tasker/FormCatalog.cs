@@ -30,17 +30,17 @@ namespace Tasker
             //if (cat == 0) writer.Write("");
             //if (cat == 0) writer.Write("");
             if (answer[0] == "error") Program.ErrorConnection();
-            listViewUsers.BeginUpdate();
-            listViewUsers.Items.Clear();
+            listViewCat.BeginUpdate();
+            listViewCat.Items.Clear();
             foreach (string s in answer)
                 if (s != "")
-                    listViewUsers.Items.Add(new ListViewItem(s));
-            listViewUsers.EndUpdate();
+                    listViewCat.Items.Add(new ListViewItem(s));
+            listViewCat.EndUpdate();
         }
 
         private void ListViewUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bool sel = listViewUsers.SelectedItems.Count > 0;
+            bool sel = listViewCat.SelectedItems.Count > 0;
             buttonEdit.Enabled = sel;
             buttonDel.Enabled = sel;
         }
@@ -51,6 +51,19 @@ namespace Tasker
             //if (cat == 1) using (FormUser form = new FormUser(true, "")) form.ShowDialog();
             //if (cat == 2) using (FormUser form = new FormUser(true, "")) form.ShowDialog();
             Refresh();
+        }
+
+        private void ButtonEdit_Click(object sender, EventArgs e)
+        {
+            if (cat == 0) using (FormUser form = new FormUser(false, listViewCat.SelectedItems[0].Text)) form.ShowDialog();
+            //if (cat == 1) using (FormUser form = new FormUser(false, listViewCat.SelectedItems[0].Text)) form.ShowDialog();
+            //if (cat == 2) using (FormUser form = new FormUser(false, listViewCat.SelectedItems[0].Text)) form.ShowDialog();
+            Refresh();
+        }
+
+        private void ListViewCat_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ButtonEdit_Click(null, null);
         }
     }
 }

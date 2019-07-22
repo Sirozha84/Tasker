@@ -37,15 +37,15 @@
             this.textBoxPasswordConfirm = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBoxDepartament = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxCompany = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBoxAdmin = new System.Windows.Forms.CheckBox();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.comboBoxDepartament = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.comboBoxPost = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBoxComment = new System.Windows.Forms.TextBox();
@@ -142,9 +142,35 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(360, 227);
-            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Данные пользователя";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(80, 181);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(68, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Должность:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(58, 154);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(90, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Подразделение:";
+            // 
+            // comboBoxDepartament
+            // 
+            this.comboBoxDepartament.FormattingEnabled = true;
+            this.comboBoxDepartament.Location = new System.Drawing.Point(154, 151);
+            this.comboBoxDepartament.Name = "comboBoxDepartament";
+            this.comboBoxDepartament.Size = new System.Drawing.Size(128, 21);
+            this.comboBoxDepartament.TabIndex = 5;
             // 
             // label5
             // 
@@ -171,7 +197,7 @@
             this.groupBox2.Location = new System.Drawing.Point(12, 245);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(360, 40);
-            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Права";
             // 
@@ -181,7 +207,7 @@
             this.checkBoxAdmin.Location = new System.Drawing.Point(6, 19);
             this.checkBoxAdmin.Name = "checkBoxAdmin";
             this.checkBoxAdmin.Size = new System.Drawing.Size(105, 17);
-            this.checkBoxAdmin.TabIndex = 7;
+            this.checkBoxAdmin.TabIndex = 0;
             this.checkBoxAdmin.Text = "Администратор";
             this.checkBoxAdmin.UseVisualStyleBackColor = true;
             // 
@@ -191,7 +217,7 @@
             this.buttonOK.Location = new System.Drawing.Point(216, 426);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
-            this.buttonOK.TabIndex = 9;
+            this.buttonOK.TabIndex = 4;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.ButtonOK_Click);
@@ -203,36 +229,10 @@
             this.buttonCancel.Location = new System.Drawing.Point(297, 426);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 10;
+            this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(58, 154);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(90, 13);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Подразделение:";
-            // 
-            // comboBoxDepartament
-            // 
-            this.comboBoxDepartament.FormattingEnabled = true;
-            this.comboBoxDepartament.Location = new System.Drawing.Point(154, 151);
-            this.comboBoxDepartament.Name = "comboBoxDepartament";
-            this.comboBoxDepartament.Size = new System.Drawing.Size(128, 21);
-            this.comboBoxDepartament.TabIndex = 5;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(80, 181);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 13);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Должность:";
             // 
             // comboBoxPost
             // 
@@ -240,7 +240,7 @@
             this.comboBoxPost.Location = new System.Drawing.Point(166, 190);
             this.comboBoxPost.Name = "comboBoxPost";
             this.comboBoxPost.Size = new System.Drawing.Size(128, 21);
-            this.comboBoxPost.TabIndex = 6;
+            this.comboBoxPost.TabIndex = 1;
             // 
             // groupBox3
             // 
@@ -251,7 +251,7 @@
             this.groupBox3.Location = new System.Drawing.Point(12, 291);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(360, 129);
-            this.groupBox3.TabIndex = 10;
+            this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Комментарий";
             // 
@@ -264,7 +264,7 @@
             this.textBoxComment.Multiline = true;
             this.textBoxComment.Name = "textBoxComment";
             this.textBoxComment.Size = new System.Drawing.Size(347, 103);
-            this.textBoxComment.TabIndex = 8;
+            this.textBoxComment.TabIndex = 0;
             // 
             // FormUser
             // 
@@ -286,7 +286,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Редактирование пользователя";
+            this.Text = "1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
