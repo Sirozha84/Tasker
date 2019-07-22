@@ -57,7 +57,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 22);
+            this.label1.Location = new System.Drawing.Point(3, 101);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(145, 13);
             this.label1.TabIndex = 0;
@@ -67,22 +67,24 @@
             // 
             this.textBoxFullName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxFullName.Location = new System.Drawing.Point(154, 19);
+            this.textBoxFullName.Location = new System.Drawing.Point(154, 98);
             this.textBoxFullName.Name = "textBoxFullName";
             this.textBoxFullName.Size = new System.Drawing.Size(200, 20);
-            this.textBoxFullName.TabIndex = 0;
+            this.textBoxFullName.TabIndex = 3;
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Location = new System.Drawing.Point(154, 45);
+            this.textBoxLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxLogin.Location = new System.Drawing.Point(154, 19);
             this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(128, 20);
-            this.textBoxLogin.TabIndex = 1;
+            this.textBoxLogin.Size = new System.Drawing.Size(200, 20);
+            this.textBoxLogin.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(107, 48);
+            this.label2.Location = new System.Drawing.Point(107, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 2;
@@ -90,16 +92,18 @@
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(154, 71);
+            this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxPassword.Location = new System.Drawing.Point(154, 45);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '●';
-            this.textBoxPassword.Size = new System.Drawing.Size(128, 20);
-            this.textBoxPassword.TabIndex = 2;
+            this.textBoxPassword.Size = new System.Drawing.Size(200, 20);
+            this.textBoxPassword.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(100, 74);
+            this.label3.Location = new System.Drawing.Point(100, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 13);
             this.label3.TabIndex = 4;
@@ -107,16 +111,18 @@
             // 
             // textBoxPasswordConfirm
             // 
-            this.textBoxPasswordConfirm.Location = new System.Drawing.Point(154, 97);
+            this.textBoxPasswordConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxPasswordConfirm.Location = new System.Drawing.Point(154, 71);
             this.textBoxPasswordConfirm.Name = "textBoxPasswordConfirm";
             this.textBoxPasswordConfirm.PasswordChar = '●';
-            this.textBoxPasswordConfirm.Size = new System.Drawing.Size(128, 20);
-            this.textBoxPasswordConfirm.TabIndex = 3;
+            this.textBoxPasswordConfirm.Size = new System.Drawing.Size(200, 20);
+            this.textBoxPasswordConfirm.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 100);
+            this.label4.Location = new System.Drawing.Point(18, 74);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(130, 13);
             this.label4.TabIndex = 6;
@@ -166,10 +172,12 @@
             // 
             // comboBoxDepartament
             // 
+            this.comboBoxDepartament.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxDepartament.FormattingEnabled = true;
             this.comboBoxDepartament.Location = new System.Drawing.Point(154, 151);
             this.comboBoxDepartament.Name = "comboBoxDepartament";
-            this.comboBoxDepartament.Size = new System.Drawing.Size(128, 21);
+            this.comboBoxDepartament.Size = new System.Drawing.Size(200, 21);
             this.comboBoxDepartament.TabIndex = 5;
             // 
             // label5
@@ -183,10 +191,12 @@
             // 
             // comboBoxCompany
             // 
+            this.comboBoxCompany.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxCompany.FormattingEnabled = true;
             this.comboBoxCompany.Location = new System.Drawing.Point(154, 124);
             this.comboBoxCompany.Name = "comboBoxCompany";
-            this.comboBoxCompany.Size = new System.Drawing.Size(128, 21);
+            this.comboBoxCompany.Size = new System.Drawing.Size(200, 21);
             this.comboBoxCompany.TabIndex = 4;
             // 
             // groupBox2
@@ -236,10 +246,12 @@
             // 
             // comboBoxPost
             // 
+            this.comboBoxPost.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPost.FormattingEnabled = true;
             this.comboBoxPost.Location = new System.Drawing.Point(166, 190);
             this.comboBoxPost.Name = "comboBoxPost";
-            this.comboBoxPost.Size = new System.Drawing.Size(128, 21);
+            this.comboBoxPost.Size = new System.Drawing.Size(200, 21);
             this.comboBoxPost.TabIndex = 1;
             // 
             // groupBox3
@@ -286,7 +298,6 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

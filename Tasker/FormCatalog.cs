@@ -65,5 +65,15 @@ namespace Tasker
         {
             ButtonEdit_Click(null, null);
         }
+
+        private void ButtonDel_Click(object sender, EventArgs e)
+        {
+            if (cat == 0)
+                if (MessageBox.Show("Вы уверены что хотите удалить пользователя " +
+                        listViewCat.SelectedItems[0].Text + "?", "Удаление пользователя",
+                        MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    Query.Say("userdel☺" + listViewCat.SelectedItems[0].Text);
+            Refresh();
+        }
     }
 }

@@ -74,6 +74,7 @@ namespace Tasker_Server
         }
         public static void SaveUsers()
         {
+            users.Sort((o1, o2) => o1.login.CompareTo(o2.login));
             try
             {
                 var serializer = new XmlSerializer(typeof(List<Users>));
@@ -136,14 +137,19 @@ namespace Tasker_Server
                 }
                 user.Set(query);
                 SaveUsers();
+                Log.Write("Запись пользователя " + query[1]);
                 return "ok";
             }
             if (query[0] == "userdel")
             {
-
-
-
-
+                Users user = users.Find(o => o.login == query[1]);
+                if (user != null)
+                {
+                    users.Remove(user);
+                    SaveUsers();
+                }
+                Log.Write("Удаление пользователя " + query[1]);
+                return "ok";
             }
             return "what?";
         }

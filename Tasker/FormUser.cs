@@ -24,6 +24,7 @@ namespace Tasker
             string[] answer = Query.Say("userread☺" + name).Split('☺');
             if (answer[0] == "ok") Close();
             if (answer[0] == "error") Program.ErrorConnection();
+            Text = "Редактирование пользователя " + answer[0];
             textBoxLogin.Text = answer[0];
             lastname = answer[0];
             textBoxPassword.Text = answer[1];
@@ -38,7 +39,8 @@ namespace Tasker
 
         private void ButtonOK_Click(object sender, EventArgs e)
         {
-            Query.Say("userdel☺" + lastname);
+            if (lastname != textBoxLogin.Text)
+                Query.Say("userdel☺" + lastname);
             string answer = Query.Say("userwrite☺" +
                 textBoxLogin.Text + "☺" +
                 textBoxPassword.Text + "☺" +
