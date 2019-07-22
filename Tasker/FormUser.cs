@@ -16,6 +16,9 @@ namespace Tasker
         public FormUser(bool newuser, string name)
         {
             InitializeComponent();
+            TextBoxLogin_TextChanged(null, null);
+            TextBoxPassword_TextChanged(null, null);
+            TextBoxPasswordConfirm_TextChanged(null, null);
             if (newuser)
             {
                 Text = "Создание нового пользователя";
@@ -59,5 +62,32 @@ namespace Tasker
             Close();
         }
 
+        void RefreshOK()
+        {
+            buttonOK.Enabled = textBoxLogin.Text.Length > 0 &
+                textBoxPassword.Text.Length > 0 &
+                textBoxPassword.Text == textBoxPasswordConfirm.Text;
+        }
+
+        private void TextBoxLogin_TextChanged(object sender, EventArgs e)
+        {
+            textBoxLogin.BackColor = textBoxLogin.Text.Length > 0 ? Color.White : Color.MistyRose;
+            RefreshOK();
+        }
+
+        private void TextBoxPassword_TextChanged(object sender, EventArgs e)
+        {
+            textBoxPassword.BackColor = textBoxPassword.Text.Length > 0 ? Color.White : Color.MistyRose;
+            textBoxPasswordConfirm.BackColor = textBoxPassword.Text == textBoxPasswordConfirm.Text ?
+                Color.White : Color.MistyRose;
+            RefreshOK();
+        }
+
+        private void TextBoxPasswordConfirm_TextChanged(object sender, EventArgs e)
+        {
+            textBoxPasswordConfirm.BackColor = textBoxPassword.Text == textBoxPasswordConfirm.Text ? 
+                Color.White : Color.MistyRose;
+            RefreshOK();
+        }
     }
 }

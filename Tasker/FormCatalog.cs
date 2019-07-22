@@ -36,6 +36,7 @@ namespace Tasker
                 if (s != "")
                     listViewCat.Items.Add(new ListViewItem(s));
             listViewCat.EndUpdate();
+            ListViewUsers_SelectedIndexChanged(null, null);
         }
 
         private void ListViewUsers_SelectedIndexChanged(object sender, EventArgs e)

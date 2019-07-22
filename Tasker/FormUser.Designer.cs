@@ -80,6 +80,7 @@
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(200, 20);
             this.textBoxLogin.TabIndex = 0;
+            this.textBoxLogin.TextChanged += new System.EventHandler(this.TextBoxLogin_TextChanged);
             // 
             // label2
             // 
@@ -99,6 +100,7 @@
             this.textBoxPassword.PasswordChar = '●';
             this.textBoxPassword.Size = new System.Drawing.Size(200, 20);
             this.textBoxPassword.TabIndex = 1;
+            this.textBoxPassword.TextChanged += new System.EventHandler(this.TextBoxPassword_TextChanged);
             // 
             // label3
             // 
@@ -118,6 +120,7 @@
             this.textBoxPasswordConfirm.PasswordChar = '●';
             this.textBoxPasswordConfirm.Size = new System.Drawing.Size(200, 20);
             this.textBoxPasswordConfirm.TabIndex = 2;
+            this.textBoxPasswordConfirm.TextChanged += new System.EventHandler(this.TextBoxPasswordConfirm_TextChanged);
             // 
             // label4
             // 
@@ -224,6 +227,7 @@
             // buttonOK
             // 
             this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonOK.Enabled = false;
             this.buttonOK.Location = new System.Drawing.Point(216, 426);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
