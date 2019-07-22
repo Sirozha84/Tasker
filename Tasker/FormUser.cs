@@ -23,8 +23,17 @@ namespace Tasker
 
         private void ButtonOK_Click(object sender, EventArgs e)
         {
-
-            Close();
+            string answer = Query.Say("userwrite☺" +
+                textBoxLogin.Text + "☺" +
+                textBoxPassword.Text + "☺" +
+                textBoxFullName + "☺" +
+                comboBoxCompany.Text + "☺" +
+                comboBoxDepartament.Text + "☺" +
+                comboBoxPost.Text + "☺" +
+                (checkBoxAdmin.Checked ? "1" : "0") + "☺" +
+                textBoxComment.Text);
+            if (answer == "ok") Close();
+            if (answer == "error") Program.ErrorConnection();
         }
 
         private void ButtonCancel_Click(object sender, EventArgs e)

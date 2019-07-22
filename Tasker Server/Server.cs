@@ -19,12 +19,12 @@ namespace Tasker_Server
         static void Main(string[] args)
         {
             Console.WriteLine("Tasker Server     Версия 1.0.0 (13.07.2019)\n");
-            LoadAccounts();
+            LoadUsers();
             Users admin = users.Find(o => o.login == "admin");
             string newpas = PasGenerate.Generate();
-            if (admin == null) users.Add(new Users("admin", "Администратор", newpas));
+            if (admin == null) users.Add(new Users("admin", newpas, "Администратор"));
             else admin.password = newpas;
-            SaveAccounts();
+            SaveUsers();
             Console.WriteLine("Пароль для пользователя admin: " + newpas);
 
             //Запуск сервера
@@ -59,12 +59,12 @@ namespace Tasker_Server
             };
         }
 
-        public static void LoadAccounts()
+        public static void LoadUsers()
         {
             try
             {
                 var serializer = new XmlSerializer(typeof(List<Users>));
-                using (var reader = new StreamReader("accounts.xml"))
+                using (var reader = new StreamReader("users.xml"))
                     users = (List<Users>)serializer.Deserialize(reader);
             }
             catch
@@ -72,12 +72,12 @@ namespace Tasker_Server
                 users = new List<Users>();
             }
         }
-        public static void SaveAccounts()
+        public static void SaveUsers()
         {
             try
             {
                 var serializer = new XmlSerializer(typeof(List<Users>));
-                using (var writer = new StreamWriter("accounts.xml"))
+                using (var writer = new StreamWriter("users.xml"))
                     serializer.Serialize(writer, users);
             }
             catch
@@ -109,6 +109,16 @@ namespace Tasker_Server
                 foreach (Users acc in users)
                    ans += acc.login + "☺";
                 return ans;
+            }
+            if (query[0] == "userwrite")
+            {
+                if (query.Count() != 9) return "error";
+                Users user = users.Find(o => o.login == query[1]);
+                if (user == null) user = new Users();
+                user.Set(query);
+                users.Add(user);
+                SaveUsers();
+                return "ok";
             }
             return "what?";
         }

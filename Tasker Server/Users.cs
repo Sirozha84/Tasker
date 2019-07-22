@@ -6,19 +6,37 @@ using System.Threading.Tasks;
 
 namespace Tasker_Server
 {
-    class Users
+    public class Users
     {
         public string login;
-        public string fullname;
         public string password;
+        public string fullname;
+        public string company;
+        public string departament;
+        public string post;
+        public string rights;
+        public string comment;
 
         public Users() { }
 
-        public Users(string login, string fullname, string password)
+        public Users(string login, string password, string fullname)
         {
             this.login = login;
             this.fullname = fullname;
             this.password = password;
         }
+
+        public void Set(string[] data)
+        {
+            login = data[1];
+            password = data[2];
+            fullname = data[3];
+            company = data[4];
+            departament = data[5];
+            post = data[6];
+            rights = data[7];
+            comment = data[8];
+        }
     }
 }
+
