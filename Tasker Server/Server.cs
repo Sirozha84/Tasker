@@ -13,19 +13,26 @@ namespace Tasker_Server
 {
     class Server
     {
-        const string minimalVersion = "1.0.0";                          //Минимальная версия клиента
-        static public List<Users> users = new List<Users>();     //Список пользователей
-        
+        const string minimalVersion = "1.0.0";              //Минимальная версия клиента
+        static public List<User> users = new List<User>();  //Список пользователей
+        public static List<Task> tasks = new List<Task>();  //Список активныз заявок
+
         static void Main(string[] args)
         {
             Console.WriteLine("Tasker Server     Версия 1.0.0 (13.07.2019)\n");
+
+            //Загрузка пользователей и создание "дефолтного" админа со случайным паролем
             LoadUsers();
-            Users admin = users.Find(o => o.login == "admin");
+            User admin = users.Find(o => o.login == "admin");
             string newpas = PasGenerate.Generate();
-            if (admin == null) users.Add(new Users("admin", newpas, "Администратор"));
+            if (admin == null) users.Add(new User("admin", newpas, "Администратор"));
             else admin.password = newpas;
             SaveUsers();
             Console.WriteLine("Пароль для пользователя admin: " + newpas);
+            
+            //Загрузка активных заявок
+            LoadWork();
+            SaveWork();
 
             //Запуск сервера
             TcpListener server = new TcpListener(IPAddress.Any, 8082);
@@ -59,25 +66,23 @@ namespace Tasker_Server
             };
         }
 
+        #region Load/Save
         public static void LoadUsers()
         {
             try
             {
-                var serializer = new XmlSerializer(typeof(List<Users>));
+                var serializer = new XmlSerializer(typeof(List<User>));
                 using (var reader = new StreamReader("users.xml"))
-                    users = (List<Users>)serializer.Deserialize(reader);
+                    users = (List<User>)serializer.Deserialize(reader);
             }
-            catch
-            {
-                users = new List<Users>();
-            }
+            catch { }
         }
         public static void SaveUsers()
         {
             users.Sort((o1, o2) => o1.login.CompareTo(o2.login));
             try
             {
-                var serializer = new XmlSerializer(typeof(List<Users>));
+                var serializer = new XmlSerializer(typeof(List<User>));
                 using (var writer = new StreamWriter("users.xml"))
                     serializer.Serialize(writer, users);
             }
@@ -86,6 +91,31 @@ namespace Tasker_Server
                 Log.Write("Ошибка при сохранении данных");
             }
         }
+        public static void LoadWork()
+        {
+            try
+            {
+                var serializer = new XmlSerializer(typeof(List<Task>));
+                using (var reader = new StreamReader("work.xml"))
+                    tasks = (List<Task>)serializer.Deserialize(reader);
+            }
+            catch { }
+        }
+        public static void SaveWork()
+        {
+            users.Sort((o1, o2) => o1.login.CompareTo(o2.login));
+            try
+            {
+                var serializer = new XmlSerializer(typeof(List<Task>));
+                using (var writer = new StreamWriter("work.xml"))
+                    serializer.Serialize(writer, tasks);
+            }
+            catch
+            {
+                Log.Write("Ошибка при сохранении данных");
+            }
+        }
+        #endregion
 
         static string answer(string[] query)
         {
@@ -94,7 +124,7 @@ namespace Tasker_Server
             {
                 if (query.Count() != 4) return "error";
                 if (query[1] != minimalVersion) return "badversion☺" + minimalVersion;
-                Users acc = users.Find(o => o.login == query[2]);
+                User acc = users.Find(o => o.login == query[2]);
                 if (acc == null) return "failed";
 #if DEBUG
                 if (query[3] != "123") return "failed";
@@ -107,7 +137,7 @@ namespace Tasker_Server
             if (query[0] == "userlist")
             {
                 string ans = "";
-                foreach (Users acc in users)
+                foreach (User acc in users)
                     if (acc.login != "admin")
                         ans += acc.login + "☺";
                 return ans;
@@ -115,7 +145,7 @@ namespace Tasker_Server
             if (query[0] == "userread")
             {
                 if (query.Count() != 2) return "error";
-                Users user = users.Find(o => o.login == query[1]);
+                User user = users.Find(o => o.login == query[1]);
                 if (user == null) return "error";
                 return user.login + "☺" +
                     user.password + "☺" +
@@ -129,10 +159,10 @@ namespace Tasker_Server
             if (query[0] == "userwrite")
             {
                 if (query.Count() != 9) return "error";
-                Users user = users.Find(o => o.login == query[1]);
+                User user = users.Find(o => o.login == query[1]);
                 if (user == null)
                 {
-                    user = new Users();
+                    user = new User();
                     users.Add(user);
                 }
                 user.Set(query);
@@ -142,7 +172,7 @@ namespace Tasker_Server
             }
             if (query[0] == "userdel")
             {
-                Users user = users.Find(o => o.login == query[1]);
+                User user = users.Find(o => o.login == query[1]);
                 if (user != null)
                 {
                     users.Remove(user);
@@ -151,6 +181,11 @@ namespace Tasker_Server
                 Log.Write("Удаление пользователя " + query[1]);
                 return "ok";
             }
+            if (query[0] == "gettasks")
+            {
+
+            }
+            //if (query[0] == "
             return "what?";
         }
     }

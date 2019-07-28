@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tasker_Server
 {
-    public class Users
+    public class User
     {
         public string login;
         public string password;
@@ -17,9 +17,9 @@ namespace Tasker_Server
         public string rights;
         public string comment;
 
-        public Users() { }
+        public User() { }
 
-        public Users(string login, string password, string fullname)
+        public User(string login, string password, string fullname)
         {
             this.login = login;
             this.fullname = fullname;

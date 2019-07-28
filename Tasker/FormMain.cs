@@ -20,6 +20,7 @@ namespace Tasker
         
         #region Menu
         private void MenuExit_Click(object sender, EventArgs e) { Close(); }
+        private void MenuRefresh_Click(object sender, EventArgs e) { Refresh(); }
         private void MenuQuery_Click(object sender, EventArgs e) { FormQuery form = new FormQuery(); form.ShowDialog(); }
         private void MenuUsers_Click(object sender, EventArgs e) { FormCatalog form = new FormCatalog(0); form.ShowDialog(); }
         private void MenuAbout_Click(object sender, EventArgs e)
@@ -28,5 +29,10 @@ namespace Tasker
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
+
+        void Refresh()
+        {
+            Query.Say("gettasks");
+        }
     }
 }
